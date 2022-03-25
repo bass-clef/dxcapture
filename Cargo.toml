@@ -1,0 +1,73 @@
+[package]
+name = "dxcapture"
+version = "1.0.0"
+authors = ["Humi@bass_clef_ <bassclef.nico@gmail.com>"]
+edition = "2021"
+license = "MIT"
+description = "`dxcapture` is a library for capturing a Direct3D 11 device on Windows."
+keywords = ["opencv", "image", "windows", "DirectX", "capture"]
+categories = ["graphics", "rendering"]
+repository = "https://github.com/bass-clef/dxcapture"
+homepage = "https://bass-clef.github.io/"
+documentation = "https://docs.rs/dxcapture/"
+
+[package.metadata.docs.rs]
+features = ["docs"]
+
+[features]
+default = []
+img = ["image"]
+mat = ["opencv", "opencv/clang-runtime"]
+docs-only = ["mat"]
+docs-nolink = ["opencv/docs-only"]
+docs-features = []
+docs = ["docs-only", "docs-nolink", "docs-features"]
+
+[dependencies.windows]
+version = "0.30.0"
+features = [
+    "Foundation",
+    "Graphics_Capture",
+    "Graphics_DirectX_Direct3D11",
+    "UI",
+    "Win32_Foundation",
+    "Win32_Graphics_Direct3D",
+    "Win32_Graphics_Direct3D11",
+    "Win32_Graphics_Dxgi",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_Graphics_Gdi",
+    "Win32_System_WinRT",
+    "Win32_System_WinRT_Direct3D11",
+    "Win32_System_WinRT_Graphics_Capture",
+    "Win32_UI_WindowsAndMessaging",
+]
+
+[dependencies.winapi]
+version = "0.3.9"
+features = [
+    "d2d1",
+    "d3d11",
+    "d3dcommon",
+    "dwmapi",
+    "dxgi",
+    "impl-default",
+    "roapi",
+    "std",
+    "wincon",
+    "winuser"
+]
+
+[dependencies.image]
+version = "0.23.14"
+optional = true
+
+[dependencies.opencv]
+version = "0.63"
+features = ["clang-runtime"]
+optional = true
+
+[dependencies]
+anyhow = "1"
+thiserror = "1.0"
+uuid = { version = "0.8", features = ["v4"] }
+winrt = "0.7"
