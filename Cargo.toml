@@ -1,11 +1,11 @@
 [package]
 name = "dxcapture"
-version = "1.0.1"
+version = "1.0.2"
 authors = ["Humi@bass_clef_ <bassclef.nico@gmail.com>"]
 edition = "2021"
 license = "MIT"
 description = "`dxcapture` is a library for capturing a Direct3D 11 device on Windows."
-keywords = ["opencv", "image", "windows", "DirectX", "capture"]
+keywords = ["opencv", "image", "windows", "directx", "capture"]
 categories = ["graphics", "rendering"]
 repository = "https://github.com/bass-clef/dxcapture"
 homepage = "https://bass-clef.github.io/"
@@ -13,6 +13,8 @@ documentation = "https://docs.rs/dxcapture/"
 
 [package.metadata.docs.rs]
 features = ["docs"]
+default-target = "x86_64-pc-windows-msvc"
+targets = ["aarch64-pc-windows-msvc", "i686-pc-windows-msvc", "x86_64-pc-windows-msvc"]
 
 [features]
 default = []
