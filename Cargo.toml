@@ -1,6 +1,6 @@
 [package]
 name = "dxcapture"
-version = "1.0.3"
+version = "1.0.4"
 authors = ["Humi@bass_clef_ <bassclef.nico@gmail.com>"]
 edition = "2021"
 license = "MIT"
@@ -20,7 +20,7 @@ targets = ["aarch64-pc-windows-msvc", "i686-pc-windows-msvc", "x86_64-pc-windows
 default = []
 img = ["image"]
 mat = ["opencv", "opencv/clang-runtime"]
-docs-only = ["mat"]
+docs-only = ["img", "mat"]
 docs-nolink = ["opencv/docs-only"]
 docs-features = []
 docs = ["docs-only", "docs-nolink", "docs-features"]

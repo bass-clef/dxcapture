@@ -28,9 +28,9 @@
 //! // hoge raw
 //! ```
 //! 
-//! [Read more with image](`dxcapture::Capture::get_img_frame`)
+//! [Read more with image](`Capture::get_img_frame`)
 //! 
-//! [Read more with opencv](`dxcapture::Capture::get_mat_frame`)
+//! [Read more with opencv](`Capture::get_mat_frame`)
 
 pub mod d3d;
 pub mod capture;
