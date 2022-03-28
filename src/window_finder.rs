@@ -137,7 +137,7 @@ extern "system" fn enum_window(handle: HWND, lparam: LPARAM) -> BOOL {
     return 1;
 }
 
-fn get_capturable_windows() -> Vec<WindowInfo> {
+pub fn get_capturable_windows() -> Vec<WindowInfo> {
     // https://support.microsoft.com/en-us/help/124103/how-to-obtain-a-console-window-handle-hwnd
     let current_console_title = unsafe {
         let console_title_length: u32 = 256;

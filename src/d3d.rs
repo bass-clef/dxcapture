@@ -58,6 +58,9 @@ use windows::{
 };
 use winrt::AbiTransferable;
 
+pub use crate::displays::enumerate_displays as enumerate_displays;
+pub use crate::window_finder::get_capturable_windows as enumerate_windows;
+
 
 pub struct D3D11Device;
 impl D3D11Device {
@@ -122,10 +125,10 @@ impl Device {
     /// Create Device from display id.
     /// ## Parameters
     /// * display_id: id of the target display. default is created by [MONITOR_DEFAULTTOPRIMARY](winapi::um::winuser::MONITOR_DEFAULTTOPRIMARY).
-    /// display_id range is [1..=len+1].
+    /// display_id range is [1..=len].
     pub fn new_from_monitor(display_id: Option<usize>) -> anyhow::Result<Self> {
         let monitor_handle = if let Some(display_id) = display_id {
-            let displays = crate::displays::enumerate_displays();
+            let displays = enumerate_displays();
             if display_id <= 0 || displays.len() <= display_id - 1 {
                 return Err(anyhow::anyhow!("DisplayId is out of range"));
             }
