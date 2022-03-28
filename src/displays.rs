@@ -42,6 +42,7 @@ extern "system" fn enum_monitor(handle: HMONITOR, _: HDC, _: LPRECT, lparam: LPA
     return 1;
 }
 
+/// Get all displays and returns them as a Vec.
 pub fn enumerate_displays() -> Vec<DisplayInfo> {
     let mut displays: Vec<DisplayInfo> = Vec::new();
     let result = unsafe {

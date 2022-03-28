@@ -40,3 +40,6 @@ pub use capture::*;
 
 mod displays;
 mod window_finder;
+
+pub use displays::enumerate_displays as enumerate_displays;
+pub use window_finder::get_capturable_windows as enumerate_windows;

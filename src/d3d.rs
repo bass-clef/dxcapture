@@ -58,10 +58,6 @@ use windows::{
 };
 use winrt::AbiTransferable;
 
-pub use crate::displays::enumerate_displays as enumerate_displays;
-pub use crate::window_finder::get_capturable_windows as enumerate_windows;
-
-
 pub struct D3D11Device;
 impl D3D11Device {
     fn new_of_type() -> winrt::Result<ID3D11Device> {
@@ -126,9 +122,9 @@ impl Device {
     /// ## Parameters
     /// * display_id: id of the target display. default is created by [MONITOR_DEFAULTTOPRIMARY](winapi::um::winuser::MONITOR_DEFAULTTOPRIMARY).
     /// display_id range is [1..=len].
-    pub fn new_from_monitor(display_id: Option<usize>) -> anyhow::Result<Self> {
+    pub fn new_from_displays(display_id: Option<usize>) -> anyhow::Result<Self> {
         let monitor_handle = if let Some(display_id) = display_id {
-            let displays = enumerate_displays();
+            let displays = crate::displays::enumerate_displays();
             if display_id <= 0 || displays.len() <= display_id - 1 {
                 return Err(anyhow::anyhow!("DisplayId is out of range"));
             }
@@ -192,6 +188,6 @@ impl Device {
 impl Default for Device {
     /// Create a new Device with primary monitor.
     fn default() -> Self {
-        Self::new_from_monitor(None).expect("Not found primary monitor")
+        Self::new_from_displays(None).expect("Not found primary monitor")
     }
 }
